@@ -7,5 +7,4 @@
   <!-- Dynamically generated content based on fetched results -->
 </div>
 
-<CommunitySection />
-    
+   

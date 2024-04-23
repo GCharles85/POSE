@@ -10,7 +10,7 @@
     <a href="/communities" class={active === 'communities' ? 'active' : ''}>Your Communities</a>
     <a href="/about" class={active === 'about' ? 'active' : ''}>Who we are</a>
     <a href="/profile" class={active === 'profile' ? 'active' : ''}>Your profile</a>
-    <a href="/diagnoses" class={active === 'diagnoses' ? 'active' : ''}>Your Diagnoses</a>
+    <a href="/routes/diagnoses" class={active === 'diagnoses' ? 'active' : ''}>Your Diagnoses</a>
   </div>
 </nav>
 
