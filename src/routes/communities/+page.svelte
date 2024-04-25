@@ -1,11 +1,9 @@
-
-
 <script lang="ts">
-  import CommunitySection from '$lib/components/CommunitySection.svelte';
+  //import CommunitySection from '$lib/components/CommunitySection.svelte';
   import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
 
   let searchTerm = '';
-  let images = []; // Array to store extracted images
+  let images: { src: string; alt: string }[] = []; // Array to store extracted images
 
   async function handleSearch() {
     if (searchTerm === '') return;
@@ -42,7 +40,7 @@
             alt: result[data.extract_rules.images.output.alt], // Access alt using selector
           }));
         } else {
-          console.warn('Scraping carparts.com directly might be blocked by CORS. Consider alternative approaches.');
+          console.warn('Scraping directly might be blocked by CORS. Consider alternative approaches.');
           // Hypothetical extraction (might not work due to CORS)
           // Replace with selectors that match carparts.com's structure (if possible)
           images = data.images.map(image => ({
