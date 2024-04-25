@@ -1,60 +1,71 @@
+<script lang="ts">
+  import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
 
-<script>
-  import { onMount } from 'svelte';
   let searchTerm = '';
-  let results = [];
+  let images = []; // Array to store extracted images
 
   async function handleSearch() {
-      if (searchTerm === '') return;
+    if (searchTerm === '') return;
 
-      const encodedTerm = encodeURIComponent(searchTerm);
-  
-      // Construct the Google search URL
-      const url = `https://www.google.com/search?q=${encodedTerm}`;
+    const encodedTerm = encodeURIComponent(searchTerm);
 
-      const response = await fetch(url);
-      const html = await response.text();
-      
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      
-      // **Limited Scope Example**: This is a very basic example that looks for snippets within title tags
-      const titles = doc.querySelectorAll('title');
-      const snippets = Array.from(titles).map(title => title.textContent);
+    // Consider storing your API key securely (e.g., environment variables)
+    const apiKey = 'TMTN3VQ57O56BS1F8HVITBGL6HZSGZLSF5LLZ1BF107TKQB257SRKIQIJLO6K978VBKE8BZ6FDMT54N2'; // Replace with your actual key (avoid hardcoding)
 
-      const results = [];
-  
+    const options = {
+      uri: 'https://app.scrapingbee.com/api/v1/',
+      qs: {
+        'api_key': apiKey,
+        'url': 'https://demo.scrapingbee.com/images.html', // Update URL with search term
+        'extract_rules': '{"images": {"selector": ".some-result-class img", "type": "list", "output": {"src": "img@src", "alt": "img@alt"}}}', // Adjust selectors and output based on carparts.com structure (remember CORS)
+      },
+      method: 'GET',
+    };
 
-      for (const snippet of snippets) {
-        const textContent = snippet.textContent.trim();
-        if (textContent) { // Avoid empty text content
-          results.push({
-            title: snippet.tagName, // Use element tag name as a basic title
-            content: textContent
-          });
-        }
+    try {
+      const response = await request(options);
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error('Error fetching results:', response.statusText);
+        return;
       }
+
+      try {
+        // Extract images using provided extract rules (if available)
+        if (data?.extract_rules?.images) {
+          images = data.results.map(result => ({
+            src: result[data.extract_rules.images.output.src], // Access src using selector
+            alt: result[data.extract_rules.images.output.alt], // Access alt using selector
+          }));
+        } else {
+          console.warn('Scraping carparts.com directly might be blocked by CORS. Consider alternative approaches.');
+          // Hypothetical extraction (might not work due to CORS)
+          // Replace with selectors that match carparts.com's structure (if possible)
+          images = data.images.map(image => ({
+            src: image.src, // Assuming direct access to "src" property
+            alt: image.alt || 'Image', // Provide default alt text if not available
+          }));
+        }
+      } catch (error) {
+        console.error('Error extracting images:', error);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 </script>
 
-<svelte:head>
-  <title>Pose - Find a Mechanic</title>
-</svelte:head>
-
 <body>
-  <main>
-    <input type="text" bind:value={searchTerm} on:keyup.enter={handleSearch} placeholder="Search for car mechanic shops or parts...">
-    <button on:click={handleSearch}>SEARCH</button>
-      <div>
-          <h2>Results</h2>
-          <ul>
-              {#each results as result}
-                  <li>{result}</li>
-              {/each}
-          </ul>
-      </div>
-  </main>
+  <input type="text" bind:value={searchTerm} on:keyup.enter={handleSearch} placeholder="Search for car mechanic shops or parts...">
+  <button on:click={handleSearch}>SEARCH</button>
+
+  <h2>Images</h2>
+  <ul>
+    {#each images as image}
+      <li>
+        <img src="{image.src}" alt="{image.alt}" width="200" height="300">
+      </li>
+    {/each}
+  </ul>
 </body>
-
-
-   
