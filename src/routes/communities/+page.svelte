@@ -1,4 +1,7 @@
+
+
 <script lang="ts">
+  import CommunitySection from '$lib/components/CommunitySection.svelte';
   import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
 
   let searchTerm = '';
