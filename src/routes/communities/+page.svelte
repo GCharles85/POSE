@@ -1,29 +1,20 @@
 <script lang="ts">
   //import CommunitySection from '$lib/components/CommunitySection.svelte';
-  import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
+  //import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
+  //import { HTMLProps, HTMLAttributes } from 'svelte';
+
+  
+
 
   let searchTerm = '';
-  let images: { src: string; alt: string }[] = 
-  [
-        {
-            "src": "https://picsum.photos/200/300?random=1",
-            "alt": "Random images 1"
-        },
-        {
-            "src": "https://picsum.photos/200/300?random=2",
-            "alt": "Random images 2"
-        },
-        {
-            "src": "https://picsum.photos/200/300?random=3",
-            "alt": "Random images 3"
-        },
-        {
-            "src": "https://picsum.photos/200/300?random=4",
-            "alt": "Random images 4"
-        }
-    ]
-  
-  ; // Array to store extracted images
+  //: { src: string; alt: string }[] 
+  let images = [
+  { src: "../../images/carparts.png", alt: "Random images 1" }, // Add a comma here
+  { src: "../../images/carparts.png", alt: "Random images 2" },
+  { src: "../../images/forum.png", alt: "Random images 3" },
+  { src: "../../images/forum.png", alt: "Random images 4" }
+];
+
 
   async function handleSearch() {
   //   if (searchTerm === '') return;
@@ -78,8 +69,9 @@
 </script>
 
 <body>
-  <input type="text" bind:value={searchTerm} on:keyup.enter={handleSearch} placeholder="Search for car mechanic shops or parts...">
-  <button on:click={handleSearch}>SEARCH</button>
+  <!--<input type="text" bind:value={searchTerm} on:keyup.enter={handleSearch} placeholder="Search for car mechanic shops or parts...">
+
+  <button on:click={handleSearch}>SEARCH</button> -->
 
   <h2>Images</h2>
   <ul>
