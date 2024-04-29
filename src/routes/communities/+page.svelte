@@ -5,17 +5,17 @@
   //import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
   //import { HTMLProps, HTMLAttributes } from 'svelte';
 
-  let searchTerm = '';
-  //: { src: string; alt: string }[] 
+  //let searchTerm = '';
+  
   let images = [
-  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/carparts.png", alt: "Random images 1" }, // Add a comma here
-  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/carparts.png", alt: "Random images 2" },
-  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/forum.png", alt: "Random images 3" },
-  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/forum.png", alt: "Random images 4" }
+  { src: "/images/carparts.png", alt: "Random images 1" }, 
+  { src: "/images/carparts.png", alt: "Random images 2" },
+  { src: "/images/forum.png", alt: "Random images 3" },
+  { src: "/images/forum.png", alt: "Random images 4" }
 ];
 
 
-  async function handleSearch() {
+  //async function handleSearch() {
   //   if (searchTerm === '') return;
 
   //   const encodedTerm = encodeURIComponent(searchTerm);
@@ -64,7 +64,7 @@
   //   } catch (error) {
   //     console.error('Error fetching data:', error);
   //   }
-   }
+ //  }
 </script>
 
 <body>
