@@ -11,10 +11,10 @@
   let searchTerm = '';
   //: { src: string; alt: string }[] 
   let images = [
-  { src: "../../images/carparts.png", alt: "Random images 1" }, // Add a comma here
-  { src: "../../images/carparts.png", alt: "Random images 2" },
-  { src: "../../images/forum.png", alt: "Random images 3" },
-  { src: "../../images/forum.png", alt: "Random images 4" }
+  { src: "./../../../carparts.png", alt: "Random images 1" }, // Add a comma here
+  { src: "./../../../carparts.png", alt: "Random images 2" },
+  { src: "./../../../forum.png", alt: "Random images 3" },
+  { src: "./../../../forum.png", alt: "Random images 4" }
 ];
 
 
