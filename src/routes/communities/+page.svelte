@@ -5,16 +5,13 @@
   //import request  from 'request-promise-native'; // Assuming 'request-promise-native' is imported
   //import { HTMLProps, HTMLAttributes } from 'svelte';
 
-  
-
-
   let searchTerm = '';
   //: { src: string; alt: string }[] 
   let images = [
-  { src: "./../../../carparts.png", alt: "Random images 1" }, // Add a comma here
-  { src: "./../../../carparts.png", alt: "Random images 2" },
-  { src: "./../../../forum.png", alt: "Random images 3" },
-  { src: "./../../../forum.png", alt: "Random images 4" }
+  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/carparts.png", alt: "Random images 1" }, // Add a comma here
+  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/carparts.png", alt: "Random images 2" },
+  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/forum.png", alt: "Random images 3" },
+  { src: "/mnt/c/Users/Gchar/Documents/POSE/src/routes/communities/forum.png", alt: "Random images 4" }
 ];
 
 

@@ -17,5 +17,5 @@
     </p>
     <p>The bigger picture?</p>
     <p>Know that you're not getting scammed when it comes to one of the most important tool of the trade that is called life</p>
-    <button>Find Your Community</button>
+    <button>Find Your Community</button> 
 </body>
