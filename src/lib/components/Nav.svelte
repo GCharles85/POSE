@@ -6,7 +6,7 @@
 <nav class="flex justify-between items-center p-4 bg-white shadow-md">
   <img src="/images/logo.png" alt="POSE Logo" class="h-8" />
   <div class="flex space-x-4">
-    <!--<a href="/" class={active === 'home' ? 'active' : ''}>Your Subscription</a>-->
+    <a href="/" class={active === 'home' ? 'active' : ''}>Home</a>
     <a href="/communities" class={active === 'communities' ? 'active' : ''}>Your Communities</a>
     <a href="/about" class={active === 'about' ? 'active' : ''}>Who we are</a>
     <a href="/facts" class={active === 'profile' ? 'active' : ''}>Fact House</a>
