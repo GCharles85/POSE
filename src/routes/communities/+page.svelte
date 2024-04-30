@@ -72,12 +72,18 @@
 
   <button on:click={handleSearch}>SEARCH</button> -->
 
-  <h2>Images</h2>
+  <!-- <h2>Images</h2>
   <ul>
     {#each images as image}
       <li>
         <img src="{image.src}" alt="{image.alt}" width="200" height="300">
       </li>
     {/each}
-  </ul>
+  </ul> -->
+  <div style="background-color: green; color: white; padding: 10px; border-radius: 5px; text-align: center; width: 100%; position: fixed; top: 0;">
+    Your Daily Facts
+  </div>
+
+  <a href="https://zenhabits.net/tao-of-productivity/">Tao of Productivity</a>
+
 </body>
