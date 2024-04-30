@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Variables
-PROJECT_ID="your-google-cloud-project-id"
-REGION="your-region"
-MODEL_NAME="your-model-name"
-INSTANCE_NAME="your-instance-name"
+PROJECT_ID="potent-well-415120"
+REGION="us-east1-b"
+MODEL_NAME="chat-model"
+INSTANCE_NAME="chat-inst"
 MACHINE_TYPE="your-machine-type" # E.g., "n1-standard-4"
 FRAMEWORK="your-framework" # E.g., "TENSORFLOW"
 
