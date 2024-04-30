@@ -1,14 +1,15 @@
 
 
-<script context="module">
+<script lang="ts">
    // cloud function url imported from env variables 
-  import { PUBLIC_FUNCTION_URL } from "$env/static/public";
+  import PUBLIC_FUNCTION_URL from './../../../static/config.json';
+  import TextareaComponent from './../../lib/textarea-component.svelte';
 
-  let inputText: String = "";
-  let outputText: String = "";
+  let inputText = "";
+  let outputText = "";
 
   // loading state indication 
-  let loadingState: boolean = false;
+  let loadingState = false;
 
   // variable for reading .txt files
   let file: HTMLInputElement;
@@ -17,7 +18,7 @@
 
   async function summarizeText() {
     loadingState = true;
-    const response = await fetch(PUBLIC_FUNCTION_URL, {
+    const response = await fetch(PUBLIC_FUNCTION_URL.PUBLIC_FUNCTION_URL, {
       method: "POST",
       body: JSON.stringify(inputText),
     });
