@@ -1,76 +1,118 @@
-<!--
-//Button to create new instances
 
-
-
-
--->
 
 <script context="module">
-  import { exec } from 'child_process';
-  
-  // Server-side function to create a new AI instance
-  export async function createAIInstance() {
-      // Path to the Bash script
-      const scriptPath = './create_ai_instance.sh';
-  
-      return new Promise((resolve, reject) => {
-          exec(scriptPath, (error, stdout, stderr) => {
-              if (error) {
-                  console.error(`Error creating AI instance: ${error.message}`);
-                  reject(error.message);
-              } else {
-                  console.log(`AI instance creation output: ${stdout}`);
-                  console.error(`stderr: ${stderr}`);
-                  resolve(stdout);
-              }
-          });
-      });
+   // cloud function url imported from env variables 
+  import { PUBLIC_FUNCTION_URL } from "$env/static/public";
+
+  let inputText: String = "";
+  let outputText: String = "";
+
+  // loading state indication 
+  let loadingState: boolean = false;
+
+  // variable for reading .txt files
+  let file: HTMLInputElement;
+
+  // function to send HTTP request cloud function and receive summary 
+
+  async function summarizeText() {
+    loadingState = true;
+    const response = await fetch(PUBLIC_FUNCTION_URL, {
+      method: "POST",
+      body: JSON.stringify(inputText),
+    });
+    outputText = await response.text();
+    loadingState = false;
   }
-  </script>
-  
-  <script>
-  // Handle the button click event
-  async function handleButtonClick() {
-      try {
-          const result = await createAIInstance();
-          console.log('AI instance created successfully:', result);
-          // Display the response to the user
-          document.getElementById('responseDisplay').innerText = `Chat created successfully: ${result}`;
-      } catch (error) {
-          console.error('Error creating AI instance:', error);
-          // Display the error message to the user
-          document.getElementById('responseDisplay').innerText = `Error creating chata: ${error}`;
-      }
+  // function for reading .txt files and storing it in variable 
+  async function fileUpload() {
+    if (file.files !== null) {
+      // inputText = await file.files[0].text();
+      inputText = await file.files[0].text();
+    }
   }
-  </script>
-  
-  <template>
-      <!-- Button that calls the server-side function when clicked -->
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mb-4" on:click={handleButtonClick}>
-        Would you like to reinforce a new habit?
-      </button>
-  
-      <!-- A div to display the response from the AI function -->
-      <div id="responseDisplay" style="margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></div>
-  </template>
-  
-
-
-
-<!-- <script>
-  import DiagnosisItem from '$lib/components/DiagnosisItem.svelte';
-
-  let diagnoses = [
-    { diagnosis: 'Brakes', cost: '500', id: '0' },
-    { diagnosis: 'Software and engine', cost: '600', id: '00' },
-    { diagnosis: 'Transmission', cost: '100', id: '000' },
-  ];
 </script>
 
-<div class="space-y-4">
-  {#each diagnoses as diagnosis (diagnosis.id)}
-    <DiagnosisItem {diagnosis}  />
-  {/each}
-</div> -->
-    
+<!-- head  -->
+<svelte:head>
+  <title>Your Chats</title>
+</svelte:head>
+
+<div class="bg-gray-100 min-h-screen">
+  <!-- navbar  -->
+  <div
+    class="flex flex-row items-center space-x-4 bg-blue-600 text-white p-4 shadow-lg font-bold text-3xl mb-4 lg:mb-16"
+  >
+    <!-- google cloud logo  -->
+    <img
+      class="w-8 h-8"
+      src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png"
+      alt=""
+    />
+    <div>Vertex Summarizer</div>
+  </div>
+  <!-- article summarizer  -->
+  <div
+    class="flex flex-col lg:flex-row mx-4 space-y-6 lg:space-y-0 lg:mx-16 lg:justify-between"
+  >
+    <!-- input textarea  -->
+    <TextareaComponent
+      bind:text={inputText}
+      name="Original Text"
+      placeholder="Enter Text"
+    />
+    <!-- stats area  -->
+    <div class="flex flex-col space-y-8 items-center justify-center">
+      <!-- summarize button  -->
+      <button
+        disabled={loadingState}
+        on:click={summarizeText}
+        class="bg-blue-600 hover:scale-105 transition text-white font-bold text-xl h-fit p-4 rounded-lg"
+      >
+        {loadingState ? "Processing" : "Summarize"}
+      </button>
+      <!-- file input  -->
+      <label
+        for="upload-file"
+        class="bg-blue-600 cursor-pointer p-4 rounded-lg hover:scale-105 transition ease-in-out text-xl font-bold text-white"
+        >Upload File (.txt)</label
+      >
+      <input
+        id="upload-file"
+        type="file"
+        accept=".txt"
+        on:change={fileUpload}
+        bind:this={file}
+        hidden
+      />
+      <!-- input characters  -->
+      <div
+        class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
+      >
+        Original Characters <br />
+        {inputText.length}
+      </div>
+      <!-- output characters  -->
+      <div
+        class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
+      >
+        Summarized Characters <br />
+        {outputText.length}
+      </div>
+    </div>
+    <!-- output textarea  -->
+    <TextareaComponent bind:text={outputText} name="Summary" readOnly />
+  </div>
+  <!-- footer  -->
+  <div
+    class="bg-blue-600 flex-row flex text-white p-4 shadow-lg text-xl mt-4 lg:mt-16 sticky top-[100vh]"
+  >
+    <a
+      href="https://github.com/bhaaratkrishnan/vertex-summarizer-svelte"
+      target="_blank"
+    >
+      <div>Made by Guyriano Charles</div>
+    </a>
+  </div>
+</div>
+  
