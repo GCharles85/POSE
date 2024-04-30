@@ -27,7 +27,7 @@
   }
   // function for reading .txt files and storing it in variable 
   async function fileUpload() {
-    if (file.files !== null) {
+    if (file !== null && file.files !== null) {
       // inputText = await file.files[0].text();
       inputText = await file.files[0].text();
     }
