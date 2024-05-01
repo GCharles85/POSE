@@ -50,7 +50,7 @@
       src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png"
       alt=""
     />-->
-    <div>What ails you?</div>
+    <div style="margin-top: 50px" >What ails you?</div>
   </div>
   <!-- article summarizer  -->
   <div
