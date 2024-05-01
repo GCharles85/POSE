@@ -84,6 +84,9 @@
     Find your place!
   </div>
 
-  <a href="https://www.mindfulnesscenter.org/" style="margin-top: 50px;">Mindfulness ⊹╰(⌣ʟ⌣)╯⊹</a>
+ 
+  <div style="padding-top: 20px;">
+    <a href="https://www.mindfulnesscenter.org/" >Mindfulness ⊹╰(⌣ʟ⌣)╯⊹</a>
+  </div>
 
 </body>

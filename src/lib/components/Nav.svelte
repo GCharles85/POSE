@@ -4,7 +4,7 @@
 </script>
 
 <nav class="flex justify-between items-center p-4 bg-white shadow-md">
-  <img src="./../logo.png" alt="POSE Logo" class="h-8" />
+  <!--<img src="./../logo.png" alt="POSE Logo" class="h-8" />-->
   <div class="flex space-x-4">
     <a href="/" class={active === 'home' ? 'active' : ''}>Home</a>
     <a href="/communities" class={active === 'communities' ? 'active' : ''}>Your Communities</a>
