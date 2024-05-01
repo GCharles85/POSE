@@ -80,10 +80,10 @@
       </li>
     {/each}
   </ul> -->
-  <div style="background-color: green; color: white; padding: 10px; border-radius: 5px; text-align: center; width: 100%; position: fixed; top: 0;">
-    Your Daily Facts
+  <div style="background-color: green; color: white; padding: 10px; border-radius: 5px; text-align: center; width: 100%; position: fixed; bottom: 0;">
+    Find your place!
   </div>
 
-  <a href="https://zenhabits.net/tao-of-productivity/">Tao of Productivity</a>
+  <a href="https://www.mindfulnesscenter.org/" style="margin-top: 50px;">Mindfulness ⊹╰(⌣ʟ⌣)╯⊹</a>
 
 </body>
