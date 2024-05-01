@@ -11,10 +11,10 @@ See the License for the specific language governing permissions and
 limitations under the License. -->
 <script lang="ts">
   // input value binding variables 
-  export let name:String;
-  export let placeholder:string="";
-  export let text: String;
-  export let readOnly: boolean = false;
+  export let name = "";
+  export let placeholder = "";
+  export let text = "";
+  export let readOnly = false;
 </script>
 
 <div class="flex flex-col lg:w-2/6">

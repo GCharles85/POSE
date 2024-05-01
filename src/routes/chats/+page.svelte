@@ -2,7 +2,7 @@
 
 <script lang="ts">
    // cloud function url imported from env variables 
-  import PUBLIC_FUNCTION_URL from './../../../static/config.json';
+  import PUBLIC_FUNCTION_URL from './../../config.json';
   import TextareaComponent from './../../lib/textarea-component.svelte';
 
   let inputText = "";
@@ -12,7 +12,7 @@
   let loadingState = false;
 
   // variable for reading .txt files
-  let file: HTMLInputElement;
+  let file = null;
 
   // function to send HTTP request cloud function and receive summary 
 
@@ -44,13 +44,13 @@
   <div
     class="flex flex-row items-center space-x-4 bg-blue-600 text-white p-4 shadow-lg font-bold text-3xl mb-4 lg:mb-16"
   >
-    <!-- google cloud logo  -->
+    <!-- google cloud logo  
     <img
       class="w-8 h-8"
       src="https://www.gend.co/hs-fs/hubfs/gcp-logo-cloud.png?width=730&name=gcp-logo-cloud.png"
       alt=""
-    />
-    <div>Vertex Summarizer</div>
+    />-->
+    <div>What ails you?</div>
   </div>
   <!-- article summarizer  -->
   <div
@@ -59,7 +59,7 @@
     <!-- input textarea  -->
     <TextareaComponent
       bind:text={inputText}
-      name="Original Text"
+      name="Mindy is here for you, FIRE AWAY! :)"
       placeholder="Enter Text"
     />
     <!-- stats area  -->
@@ -90,14 +90,14 @@
       <div
         class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
       >
-        Original Characters <br />
+        Your Woes <br />
         {inputText.length}
       </div>
       <!-- output characters  -->
       <div
         class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
       >
-        Summarized Characters <br />
+        Mindy's Thoughts <br />
         {outputText.length}
       </div>
     </div>
@@ -109,7 +109,7 @@
     class="bg-blue-600 flex-row flex text-white p-4 shadow-lg text-xl mt-4 lg:mt-16 sticky top-[100vh]"
   >
     <a
-      href="https://github.com/bhaaratkrishnan/vertex-summarizer-svelte"
+      href="https://github.com/gcharles85"
       target="_blank"
     >
       <div>Made by Guyriano Charles</div>
