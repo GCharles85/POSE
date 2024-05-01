@@ -7,12 +7,12 @@
 
   //let searchTerm = '';
   
-  let images = [
-  { src: "/images/carparts.png", alt: "Random images 1" }, 
-  { src: "/images/carparts.png", alt: "Random images 2" },
-  { src: "/images/forum.png", alt: "Random images 3" },
-  { src: "/images/forum.png", alt: "Random images 4" }
-];
+//   let images = [
+//   { src: "/images/carparts.png", alt: "Random images 1" }, 
+//   { src: "/images/carparts.png", alt: "Random images 2" },
+//   { src: "/images/forum.png", alt: "Random images 3" },
+//   { src: "/images/forum.png", alt: "Random images 4" }
+// ];
 
 
   //async function handleSearch() {

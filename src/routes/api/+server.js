@@ -17,11 +17,7 @@ import { compact } from '../../../utils/array.js';
 import { not_found } from '../utils.js';
 import { SCHEME } from '../../../utils/url.js';
 import { check_feature } from '../../../utils/features.js';
-import fetch from 'node-fetch';
-//const { fetch } = require('node-fetch');
-//var myHeaders = new fetch.Headers();
-global.fetch = fetch
-global.Headers = fetch.Headers;
+
 
 const cwd = process.cwd();
 
