@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from 'svelte';
     let title = 'Mindy';
 </script>
 
@@ -7,7 +6,7 @@
     <title>{title}</title>
 </svelte:head>
 
-<body>
+<div>
     <h1>Mindy's Mindful Matter: What Ails Your Brain Matter? :)</h1>
     <p>We believe in efficiency. Reliable input. Thorough output. We focus on the synergy of systems,
         <br>
@@ -22,4 +21,4 @@
         Find Your Community
     </button>
     
-</body>
+</div>

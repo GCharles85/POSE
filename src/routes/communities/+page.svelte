@@ -67,7 +67,7 @@
  //  }
 </script>
 
-<body>
+<div>
   <!--<input type="text" bind:value={searchTerm} on:keyup.enter={handleSearch} placeholder="Search for car mechanic shops or parts...">
 
   <button on:click={handleSearch}>SEARCH</button> -->
@@ -89,4 +89,4 @@
     <a href="https://www.mindfulnesscenter.org/" >Mindfulness ⊹╰(⌣ʟ⌣)╯⊹</a>
   </div>
 
-</body>
+</div>
