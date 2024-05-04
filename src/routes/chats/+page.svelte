@@ -1,6 +1,17 @@
 
+<!--TODO
 
+- Add check for no words entered
+- Add text that goal should be positive numbers 
+- change button & paragraph style to something rounder and green
+- All fonts to cursive-ish 
+
+-->
 <script lang="ts">
+
+  // Import the sentiment analysis module
+  import sentiment from 'sentiment';
+
    // cloud function url imported from env variables 
   import PUBLIC_FUNCTION_URL from './../../config.json';
   import TextareaComponent from './../../lib/textarea-component.svelte';
@@ -14,6 +25,8 @@
   // variable for reading .txt files
   let file = null;
 
+  let analysisResult = null;
+
   // function to send HTTP request cloud function and receive summary 
 
   async function summarizeText() {
@@ -23,6 +36,11 @@
       body: JSON.stringify(inputText),
     });
     outputText = await response.text();
+
+    //Perform sentiment analysis on the output text
+    const sentimentAnalyzer = new sentiment();
+    analysisResult = sentimentAnalyzer.analyze(outputText);
+
     loadingState = false;
   }
   // function for reading .txt files and storing it in variable 
@@ -104,6 +122,17 @@
     <!-- output textarea  -->
     <TextareaComponent bind:text={outputText} name="Summary" readOnly />
   </div>
+
+  <!-- Display the analysis result -->
+  {#if analysisResult}
+  <div class="bg-white p-4 mt-4 rounded-lg">
+    <h3>Analysis Result:</h3>
+    <p>Score: {analysisResult.score}</p>
+    <p>Positive Words: {analysisResult.positive.join(', ')}</p>
+    <p>Negative Words: {analysisResult.negative.join(', ')}</p>
+  </div>
+  {/if}
+
   <!-- footer  -->
   <div
     class="bg-blue-600 flex-row flex text-white p-4 shadow-lg text-xl mt-4 lg:mt-16 sticky top-[100vh]"
