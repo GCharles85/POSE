@@ -27,7 +27,8 @@
   // function to send HTTP request cloud function and receive summary 
 
   // Function to summarize text and perform sentiment analysis
-async function summarizeText(): Promise<void> {
+async function summarizeText()
+{
     // Set loading state to true
     loadingState = true;
 
