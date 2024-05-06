@@ -1,7 +1,7 @@
 
 <!--TODO
 - change button & paragraph style to something rounder and green
-- All fonts to cursive-ish 
+
 
 -->
 <script lang="ts">
@@ -95,6 +95,7 @@ async function summarizeText()
   <!-- navbar  -->
   <div
     class="flex flex-row items-center space-x-4 bg-blue-600 text-white p-4 shadow-lg font-bold text-3xl mb-4 lg:mb-16"
+    style="font-family: 'Lobster', cursive;"
   >
     <!-- google cloud logo  
     <img
@@ -107,6 +108,7 @@ async function summarizeText()
   <!-- article summarizer  -->
   <div
     class="flex flex-col lg:flex-row mx-4 space-y-6 lg:space-y-0 lg:mx-16 lg:justify-between"
+    style="font-family: 'Lobster', cursive;"
   >
     <!-- input textarea  -->
     <TextareaComponent
@@ -115,7 +117,8 @@ async function summarizeText()
       placeholder="Enter Text"
     />
     <!-- stats area  -->
-    <div class="flex flex-col space-y-8 items-center justify-center">
+    <div class="flex flex-col space-y-8 items-center justify-center" style="font-family: 'Lobster', cursive;">
+      
       <!-- summarize button  -->
       <button
         disabled={loadingState}
@@ -141,6 +144,7 @@ async function summarizeText()
       <!-- input characters  -->
       <div
         class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
+        style="font-family: 'Lobster', cursive;"
       >
         Your Woes <br />
         {inputText.length}
@@ -148,6 +152,7 @@ async function summarizeText()
       <!-- output characters  -->
       <div
         class="text-xl hover:scale-105 transition font-bold text-center bg-white text-blue-600 p-4 rounded-lg"
+        style="font-family: 'Lobster', cursive;"
       >
         Mindy's Thoughts <br />
         {outputText.length}
@@ -159,7 +164,7 @@ async function summarizeText()
 
   <!-- Display the analysis result -->
   {#if analysisResult}
-  <div class="bg-white p-4 mt-4 rounded-lg">
+  <div class="bg-white p-4 mt-4 rounded-lg"  style="font-family: 'Lobster', cursive;">
     <h3>Analysis Result (LET'S TRY TO KEEP THAT SCORE POSITIVE!):</h3>
     <p>Score: {analysisResult.score}</p>
     <p>Positive Words: {analysisResult.positive.join(', ')}</p>

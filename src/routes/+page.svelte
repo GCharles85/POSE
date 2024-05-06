@@ -6,7 +6,7 @@
     <title>{title}</title>
 </svelte:head>
 
-<div>
+<div style="font-family: 'Lobster', cursive;">
     <h1>Mindy's Mindful Matter: What Ails Your Brain Matter? :)</h1>
     <p>We believe in efficiency. Reliable input. Thorough output. We focus on the synergy of systems,
         <br>
