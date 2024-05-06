@@ -56,9 +56,9 @@ async function summarizeText()
         });
 
         // Handle non-2xx status codes as errors
-        if (!response.ok) {
-            throw new Error('Failed to fetch summary');
-        }
+        // if (!response.ok) {
+        //     throw new Error('Failed to fetch summary');
+        // }
 
         // Get the response text
         outputText = await response.text();
