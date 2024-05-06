@@ -1,8 +1,5 @@
 
 <!--TODO
-
-- Add check for no words entered
-- Add text that goal should be positive numbers 
 - change button & paragraph style to something rounder and green
 - All fonts to cursive-ish 
 
@@ -29,20 +26,56 @@
 
   // function to send HTTP request cloud function and receive summary 
 
-  async function summarizeText() {
+  // Function to summarize text and perform sentiment analysis
+async function summarizeText(): Promise<void> {
+    // Set loading state to true
     loadingState = true;
-    const response = await fetch(PUBLIC_FUNCTION_URL.PUBLIC_FUNCTION_URL, {
-      method: "POST",
-      body: JSON.stringify(inputText),
-    });
-    outputText = await response.text();
 
-    //Perform sentiment analysis on the output text
-    const sentimentAnalyzer = new sentiment();
-    analysisResult = sentimentAnalyzer.analyze(outputText);
+    // Check if inputText is empty or only contains whitespace
+    if (inputText.trim() === '') {
+        // Set outputText with a message asking for an actual message
+        outputText = 'Please give Mindy an actual message!';
+        analysisResult = null; // Set analysisResult to null
 
-    loadingState = false;
-  }
+        // Reset loading state
+        loadingState = false;
+
+        // Return early
+        return;
+    }
+
+    try {
+        // Send HTTP POST request to the cloud function
+        const response = await fetch(PUBLIC_FUNCTION_URL.PUBLIC_FUNCTION_URL, {
+            method: 'POST',
+            body: JSON.stringify({ text: inputText }), // Adjusted to use JSON object
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Handle non-2xx status codes as errors
+        if (!response.ok) {
+            throw new Error('Failed to fetch summary');
+        }
+
+        // Get the response text
+        outputText = await response.text();
+
+        // Perform sentiment analysis on the output text
+        const sentimentAnalyzer = new sentiment();
+        analysisResult = sentimentAnalyzer.analyze(outputText);
+    } catch (error) {
+        // Handle errors gracefully
+        console.error('Error:', error);
+        outputText = 'An error occurred while processing the request.';
+        analysisResult = null; // Reset analysisResult in case of error
+    } finally {
+        // Reset loading state
+        loadingState = false;
+    }
+}
+
   // function for reading .txt files and storing it in variable 
   async function fileUpload() {
     if (file !== null && file.files !== null) {
@@ -126,7 +159,7 @@
   <!-- Display the analysis result -->
   {#if analysisResult}
   <div class="bg-white p-4 mt-4 rounded-lg">
-    <h3>Analysis Result:</h3>
+    <h3>Analysis Result (LET'S TRY TO KEEP THAT SCORE POSITIVE!):</h3>
     <p>Score: {analysisResult.score}</p>
     <p>Positive Words: {analysisResult.positive.join(', ')}</p>
     <p>Negative Words: {analysisResult.negative.join(', ')}</p>
@@ -145,4 +178,11 @@
     </a>
   </div>
 </div>
+
+<!-- CSS -->
+<style>
+  .cursive-text {
+      font-family: cursive; /* Apply a generic cursive font style */
+  }
+</style>
   
