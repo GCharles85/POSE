@@ -166,17 +166,17 @@ async function summarizeText()
   <!-- Display the analysis result -->
   {#if analysisResult}
   <div class="bg-white p-4 mt-4 rounded-lg"  style="font-family: 'Lobster', cursive;">
-    <h3 class="white header">Analysis Result (LET'S TRY TO KEEP THAT SCORE POSITIVE!):</h3>
+    <h3 class="charcoal-header">Analysis Result (KEEP THAT SCORE POSITIVE!):</h3>
     <p>Score: {analysisResult.score}</p>
-    <p>Positive Words: {analysisResult.positive.join(', ')}</p>
-    <p>Negative Words: {analysisResult.negative.join(', ')}</p>
+    <p>Positive Words: {Array.from(new Set(analysisResult.positive)).slice(0, 5).join(', ')}</p>
+    <p>Negative Words: {Array.from(new Set(analysisResult.negative)).slice(0, 5).join(', ')}</p>
   </div>
   {/if}
 
 <style>
   /* Add your CSS styles in the style block */
-  .white-header {
-      color: white; /* Set the text color to white */
+  .charcoal-header {
+      color: #36454F /* In your <style> block */
   }
 </style>
 
