@@ -45,7 +45,7 @@ async function summarizeText()
         return;
     }
 
-    try {
+    //try {
         // Send HTTP POST request to the cloud function
         const response = await fetch(PUBLIC_FUNCTION_URL.PUBLIC_FUNCTION_URL, {
             method: 'POST',
@@ -55,10 +55,10 @@ async function summarizeText()
             }
         });
 
-        // Handle non-2xx status codes as errors
-        // if (!response.ok) {
-        //     throw new Error('Failed to fetch summary');
-        // }
+        //Handle non-2xx status codes as errors
+        //  if (!response.ok) {
+        //      throw new Error('Failed to fetch summary');
+        //  }
 
         // Get the response text
         outputText = await response.text();
@@ -66,15 +66,17 @@ async function summarizeText()
         // Perform sentiment analysis on the output text
         const sentimentAnalyzer = new sentiment();
         analysisResult = sentimentAnalyzer.analyze(outputText);
-    } catch (error) {
-        // Handle errors gracefully
-        console.error('Error:', error);
-        outputText = 'An error occurred while processing the request.';
-        analysisResult = null; // Reset analysisResult in case of error
-    } finally {
-        // Reset loading state
-        loadingState = false;
-    }
+    // } catch (error) {
+    //     // Handle errors gracefully
+    //     console.error('Error:', error);
+    //     outputText = 'An error occurred while processing the request.';
+    //     analysisResult = null; // Reset analysisResult in case of error
+    // } finally {
+    //     // Reset loading state
+    //     loadingState = false;
+    // }
+
+    loadingState = false;
 }
 
   // function for reading .txt files and storing it in variable 
