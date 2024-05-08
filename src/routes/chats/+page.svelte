@@ -125,7 +125,7 @@ async function summarizeText()
         on:click={summarizeText}
         class="bg-blue-600 hover:scale-105 transition text-white font-bold text-xl h-fit p-4 rounded-lg"
       >
-        {loadingState ? "Processing" : "Summarize"}
+        {loadingState ? "Processing" : "Talk to Mindy"}
       </button>
       <!-- file input  -->
       <label
