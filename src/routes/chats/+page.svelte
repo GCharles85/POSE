@@ -54,6 +54,7 @@ async function summarizeText()
                 'Content-Type': 'application/json'
             }
         });
+        console.log('HTTP Status:', response.status);
 
         //Handle non-2xx status codes as errors
          if (!response.ok) {
@@ -69,8 +70,8 @@ async function summarizeText()
     } catch (error) {
         // Handle errors gracefully
         console.error('Error:', error);
-        outputText = 'An error occurred while processing the request.';
-        analysisResult = null; // Reset analysisResult in case of error
+        //outputText = 'An error occurred while processing the request.';
+        //analysisResult = null; // Reset analysisResult in case of error
     } finally {
         // Reset loading state
         loadingState = false;
@@ -165,12 +166,19 @@ async function summarizeText()
   <!-- Display the analysis result -->
   {#if analysisResult}
   <div class="bg-white p-4 mt-4 rounded-lg"  style="font-family: 'Lobster', cursive;">
-    <h3>Analysis Result (LET'S TRY TO KEEP THAT SCORE POSITIVE!):</h3>
+    <h3 class="white header">Analysis Result (LET'S TRY TO KEEP THAT SCORE POSITIVE!):</h3>
     <p>Score: {analysisResult.score}</p>
     <p>Positive Words: {analysisResult.positive.join(', ')}</p>
     <p>Negative Words: {analysisResult.negative.join(', ')}</p>
   </div>
   {/if}
+
+<style>
+  /* Add your CSS styles in the style block */
+  .white-header {
+      color: white; /* Set the text color to white */
+  }
+</style>
 
   <!-- footer  -->
   <div
@@ -184,11 +192,3 @@ async function summarizeText()
     </a>
   </div>
 </div>
-
-<!-- CSS -->
-<style>
-  .cursive-text {
-      font-family: cursive; /* Apply a generic cursive font style */
-  }
-</style>
-  
