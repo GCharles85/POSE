@@ -8,3 +8,7 @@ export interface Url {
 const initialUrls: Url[] = [];
 
 export const urlStore = writable<Url[]>(initialUrls);
+
+export function removeUrl(id: number) {
+    urlStore.update(urls => urls.filter(url => url.id !== id));
+}

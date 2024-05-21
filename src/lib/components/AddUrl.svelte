@@ -5,14 +5,20 @@
     let newUrl = '';
   
     const addUrl = () => {
-      if (newUrl.trim()) {
+        var formattedUrl = newUrl.trim();
+
+        // Check if the URL already starts with "http://" or "https://"
+        if (!/^https?:\/\//i.test(formattedUrl)) {
+            // If not, prepend "https://"
+            formattedUrl = `https://${formattedUrl}`;
+        }
+
+        // Update the store with the formatted URL
         urlStore.update(urls => {
-          const id = urls.length ? urls[urls.length - 1].id + 1 : 1;
-          return [...urls, { id, url: newUrl }];
+        const id = urls.length ? urls[urls.length - 1].id + 1 : 1;
+        return [...urls, { id, url: formattedUrl }];
         });
-        newUrl = '';
-      }
-    };
+    }
   </script>
   
   <div>

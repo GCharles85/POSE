@@ -1,6 +1,6 @@
 <script lang="ts">
-  import AddUrl from '../../lib/components/AddUrl.svelte';
-  import UrlList from '../../lib/components/UrlList.svelte';
+  import AddUrl from '$lib/components/AddUrl.svelte';
+  import UrlList from '$lib/components/UrlList.svelte';
 </script>
 
 <main>
