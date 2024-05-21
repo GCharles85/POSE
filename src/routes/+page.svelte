@@ -23,8 +23,4 @@
         <br>
     </p>
     
-    <button onclick="window.location.href = '/communities';">
-        Find Your Community
-    </button>
-    
 </div>
