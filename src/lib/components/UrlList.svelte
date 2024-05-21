@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { urlStore, Url } from '../stores/urlStore';
+    import { urlStore, Url } from '../stores/UrlStore';
     import { get } from 'svelte/store';
   
     let urls: Url[] = [];
