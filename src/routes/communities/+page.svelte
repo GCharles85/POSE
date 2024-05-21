@@ -4,7 +4,7 @@
 </script>
 
 <main>
-  <h1>Add Links to Your Favorite Communities Here</h1>
+  <h1 style="font-family: 'Lobster', cursive;">Add Links to Your Favorite Communities Here</h1>
   <AddUrl />
   <UrlList />
 </main>
@@ -19,15 +19,16 @@
 </div>
 
 <style>
+
   main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    font-size: .7rem;
+    /*padding-left: 1rem; Optional: Add padding for better spacing from the edge */
   }
 
-  h1 {
-    margin-bottom: 20px;
-  }
 </style>
 
   
