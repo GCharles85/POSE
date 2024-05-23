@@ -1,9 +1,10 @@
-
 <script>
   import Nav from '$lib/components/Nav.svelte';
   import '../styles/app.css';
 
-  
+  export const ssr = false;
+  export const prerender = true;
+
 </script>
 
 <Nav active="home" />
@@ -11,5 +12,3 @@
   <slot />
 </div>
 
-<!--export const ssr = false;
-export const prerender = false;-->

@@ -11,6 +11,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"svelte": "^4.2.7",
@@ -21,8 +22,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@capacitor/android": "^6.0.0",
+		"@capacitor/cli": "^6.0.0",
+		"@capacitor/core": "^6.0.0",
+		"@capacitor/geolocation": "^6.0.0",
+		"@capacitor/ios": "^6.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",
-		"@sveltejs/adapter-static": "^3.0.1",
 		"child_process": "^1.0.2",
 		"node-fetch": "^3.3.2",
 		"request-promise-native": "^1.0.9",
